@@ -2,12 +2,26 @@ const chalk = require('chalk');
 const GeoCode = require('./utils/GeoCode');
 const Forecast = require('./utils/Forecast');
 
-GeoCode('new delhi', (error, data) => {
-    console.log('error: ', error);
-    console.log('data: ', data);
-});
+const address = process.argv[2];
 
-Forecast(longitude = 77.2, latitude = 28.7, (error, data) => {
-    console.log('error: ', error);
-    console.log('data: ', data);
-});
+if(!address || address === ''){     // if address is undefined or empty string
+    console.log('Please provide a Address!');
+}
+else {
+    GeoCode(address, (error, {longitude, latitude, location}) => {
+        if(error) {
+            return console.log(error);
+        }
+    
+        Forecast(longitude, latitude, (error, forecastData) => { // forecastData is a string
+            if(error) {
+                return console.log(error);
+            }
+    
+            console.log(location);
+            console.log(forecastData);
+        });
+    });
+}
+
+
