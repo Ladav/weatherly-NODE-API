@@ -47,6 +47,18 @@ app.get('/weather', (req, res) => {
     });
 });
 
+app.get('/products', (req, res) => {
+    if(!req.query.location) {
+        return res.send({
+             error: 'location is required.'
+        });
+    }
+
+    res.send({
+        product: 'this the product name!'
+    });
+});
+
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title: '404',
