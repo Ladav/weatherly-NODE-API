@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
+const GeoCode = require('./utils/GeoCode');
+const Forecast = require('./utils/Forecast');
 
 const app = express();
 
@@ -41,9 +43,30 @@ app.get('/help', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
-    res.send({          // data will be send in JSON format automatically
-        forecast: 55,
-        location: `new Delhi, India`
+    if(!req.query.address) {
+        return res.send({
+            error: "address is required!"
+        });
+    }
+    
+    const address = req.query.address;//pending consider the case address entred is ''(empty)
+    // as return statement is used above so i don't need an else clause
+    GeoCode(address, (error, {longitude, latitude, location} = {}) => {
+        if(error) {
+            return res.send({error: `${error}`});
+        }
+
+        Forecast(longitude, latitude, (error, forecastData) => {
+            if(error) {
+                return res.send({error: `${error}`});
+            }
+            // send forecast if everything gone well
+            res.send({          // data will be send in JSON format automatically
+                forecast: forecastData,
+                location,
+                address: `${address}`
+            });
+        });
     });
 });
 
