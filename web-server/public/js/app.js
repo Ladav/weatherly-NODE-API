@@ -1,1 +1,0 @@
-console.log('the index page is loaded!');
