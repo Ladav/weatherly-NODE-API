@@ -5,6 +5,7 @@ const GeoCode = require('./utils/GeoCode');
 const Forecast = require('./utils/Forecast');
 
 const app = express();
+const port = process.env.PORT || 3000; // herokus port || defualt port(for localhost)
 
 // Define paths for Express config
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -98,6 +99,6 @@ app.get('*', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('server started successfully!');
+app.listen(port, () => {
+    console.log(`server started successfully at ${port}`);
 });
