@@ -20,9 +20,9 @@ body {
 header { margin: 10px; }
 
 header a {
+    margin: 0 10px 0 10px;
     text-decoration: none;
     color: #aaa;
-    margin: 0 10px 0 10px;
 }
 
 h1 {
