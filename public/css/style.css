@@ -19,10 +19,6 @@ body {
     flex-grow: 1;
 }
 
-footer {
-    height: 10%;
-}
-
 header {
     margin: 10px;
 }
