@@ -1,6 +1,5 @@
 console.log('the index page is loaded!');
 
-
 const weatherform = document.querySelector('form');
 const search = document.querySelector('input');
 const msgTwo = document.querySelector('.msg-2');
@@ -26,7 +25,4 @@ weatherform.addEventListener('submit', event => {
             }
         });
     });
-    
-    
-
 });

@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
+const cors = require('cors');
 const GeoCode = require('./utils/GeoCode');
 const Forecast = require('./utils/Forecast');
 
@@ -14,11 +15,12 @@ const partialsPath = path.join(__dirname, '../templates/partials');
 
 // Setup handlebars engine and 'views' location and partial
 app.set('view engine', 'hbs');
-app.set('views', viewsPath);
+app.set('views', viewsPath); 
 hbs.registerPartials(partialsPath);
 
 // Setup static directory to serve
-app.use(express.static(publicDirectoryPath));   
+app.use(express.static(publicDirectoryPath));
+app.use(cors());  
 //index will be referred automatically for homepage as index.html has a special meaning to the servers
 
 app.get('', (req, res) => {
