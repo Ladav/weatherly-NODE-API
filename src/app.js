@@ -70,7 +70,10 @@ app.get('/weather', (req, res) => {
             //     address: `${address}`
             // });
             res.send({          // data will be send in JSON format automatically
-                forecast: forecastData
+                forecast: {
+                    ...forecastData,
+                    location
+                }
             });
         });
     });
