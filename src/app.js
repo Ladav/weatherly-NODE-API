@@ -64,10 +64,13 @@ app.get('/weather', (req, res) => {
                 return res.send({error: `${error}`});
             }
             // send forecast if everything gone well
+            // res.send({          // data will be send in JSON format automatically
+            //     forecast: forecastData,
+            //     location,
+            //     address: `${address}`
+            // });
             res.send({          // data will be send in JSON format automatically
-                forecast: forecastData,
-                location,
-                address: `${address}`
+                forecast: forecastData
             });
         });
     });
