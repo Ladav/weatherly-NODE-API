@@ -13,15 +13,15 @@ weatherform.addEventListener('submit', event => {
     msgOne.textContent = 'Loading...';
     msgTwo.textContent = '';
 
-    fetch(`/weather?address=${location}`).then(response => {
+    fetch(`/weather?address=${location}&unit=si`).then(response => {    // assuming the api user require temperatuer in celsius 'si'
         response.json().then( data => {
             if(data.error) {
                 msgOne.textContent = data.error;
             }
             else{
                 // display forecast data
-                msgOne.textContent = data.location;
-                msgTwo.textContent = data.forecast;
+                msgOne.textContent = data.forecast.currently.temperature;
+                msgTwo.textContent = data.forecast.location;
             }
         });
     });
