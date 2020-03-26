@@ -163,6 +163,14 @@ You will also see any lint errors in the console.
 
 It is for the Server use. Weatherly is currently deployed on [heroku](https://www.heroku.com/) cloud.
 
+#### `Test or Try`
+Weatherly provide a basic UI for the client to test the app. [test](https://ladav-weatherly.herokuapp.com/)
+
 ## UI
 
 ![Application's User Interface](./temporary/github_photo.PNG)
+
+
+### Applications developed using Weatherly API
+
+[weatherly-WeatherApp](https://weatherly-react-app.firebaseapp.com/)
