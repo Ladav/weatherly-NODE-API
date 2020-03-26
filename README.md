@@ -14,7 +14,7 @@ A Forecast Request returns the current weather conditions, an hour-by-hour forec
 
 ##### Example Request
 
-`https://ladav-weatherly.herokuapp.com/weather?address=[location]&unit=[unit]`
+`https://ladav-weatherly.herokuapp.com/weather?address=delhi`
       
       `{
           "location": "Delhi, India",
@@ -123,11 +123,11 @@ Return weather condition for the best match of passed location.
 
 #### `units=[units]` optional
 Return weather conditions in the requested units. [units] should be one of the following:
+* `us`: Imperial units / Fahrenheit
+* `si`: SI units / Celsius (the default)
 * `auto`: automatically select units based on geographic location
 * `ca`: same as si, except that windSpeed and windGust are in kilometers per hour
 * `uk2`: same as si, except that nearestStormDistance and visibility are in miles, and windSpeed and windGust in miles per hour
-* `us`: Imperial units / Fahrenheit
-* `si`: SI units / Celsius (the default)
 
 #### `exclude=[blocks]` optional
 Exclude some number of data blocks from the API response. This is useful for reducing latency and saving cache space. The value blocks should be a comma-delimeted list (without spaces) of any of the following:
@@ -149,7 +149,7 @@ Can have the following values:
   * get node JS- [Node JS](https://nodejs.org/en/)
   * After that download or clone the project, run `npm install` in the project directory to download the application dependencies.
 
-In the project directory, you can run:
+### In the project directory, you can run:
 
 #### `npm run dev`
 
@@ -164,7 +164,7 @@ You will also see any lint errors in the console.
 It is for the Server use. Weatherly is currently deployed on [heroku](https://www.heroku.com/) cloud.
 
 #### `Test or Try`
-Weatherly provide a basic UI for the client to test the app. [test](https://ladav-weatherly.herokuapp.com/)
+Weatherly provide's a basic UI to the client to test the application. [test](https://ladav-weatherly.herokuapp.com/)
 
 ## UI
 
