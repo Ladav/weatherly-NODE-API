@@ -1,8 +1,9 @@
 const request = require('request');
 
-const Forecast = (longitude, latitude, unit, callback) => {
-    const url = `https://api.darksky.net/forecast/${process.env.FORECAST}/${latitude},${longitude}?units=${unit}&exclude=minutely,flags,alerts`;
+const Forecast = (longitude, latitude, unit, exclude, callback) => {
 
+    const url = `https://api.darksky.net/forecast/${process.env.FORECAST}/${latitude},${longitude}?units=${unit}&exclude=${exclude}`;
+    
     request({ url, json: true }, (error, {body}) => { //{body} = response.body ex-destructuring
         if (error) {
             callback('Unable to connect the weather services!', undefined)

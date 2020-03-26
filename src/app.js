@@ -53,28 +53,23 @@ app.get('/weather', (req, res) => {
     }
     
     const address = req.query.address;//pending consider the case address entred is ''(empty)
-    const unit = req.query.unit;
+    const unit = req.query.unit || 'si';
+    const exclude = req.query.exclude;
+
     // as return statement is used above so i don't need an else clause
     GeoCode(address, (error, {longitude, latitude, location} = {}) => {
         if(error) {
             return res.send({error: `${error}`});
         }
 
-        Forecast(longitude, latitude, unit, (error, forecastData) => {
+        Forecast(longitude, latitude, unit, exclude, (error, forecastData) => {
             if(error) {
                 return res.send({error: `${error}`});
             }
             // send forecast if everything gone well
-            // res.send({          // data will be send in JSON format automatically
-            //     forecast: forecastData,
-            //     location,
-            //     address: `${address}`
-            // });
             res.send({          // data will be send in JSON format automatically
-                forecast: {
-                    ...forecastData,
-                    location
-                }
+                location,
+                ...forecastData
             });
         });
     });
